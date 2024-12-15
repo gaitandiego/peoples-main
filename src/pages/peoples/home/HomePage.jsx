@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Backdrop, Box, Button, Container, Fade, Modal, Typography } from '@mui/material'
+import React, { useState, useEffect } from 'react';
+import { Backdrop, Box, Button, Container, Fade, Modal, Typography } from '@mui/material';
 import * as TEXT from '../../../constants/text';
 import { PEOPLES_API } from '../../../constants/api';
 import { useNavigate } from 'react-router';
@@ -43,20 +43,37 @@ const HomePage = () => {
             headerName: 'Address',
             width: 150
         },
+        {
+            field: 'actions',
+            headerName: 'Actions',
+            width: 150,
+            renderCell: (params) => (
+                <>
+                    <Button key={`edit-${params.row.id}`} aria-label="Edit User" onClick={() => handleEditAction(params.row)}>Edit</Button>
+                    <Button key={`delete-${params.row.id}`} aria-label="Delete User" onClick={() => handleDeleteAction(params.row)}>Delete</Button>
+                </>
+            )
+        }
     ];
-    const [peoples, setPeoples] = useState([])
+    const [peoples, setPeoples] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [modalOpen, setModalOpen] = useState(false)
-    const [idSelect, setIdSelect] = useState(null)
+    const [error, setError] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [idSelect, setIdSelect] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
+            setError(null);
             try {
                 const response = await fetch(PEOPLES_API);
+                if (!response.ok) {
+                    throw new Error('Failed to load data');
+                }
                 const data = await response.json();
                 setPeoples(data);
             } catch (error) {
+                setError(error.message);
                 console.error(error);
             } finally {
                 setLoading(false);
@@ -66,25 +83,28 @@ const HomePage = () => {
     }, []);
 
     const handleAddButtonToolbar = () => navigate(ROUTES.PEOPLES_ADD);
-    const handleDeleteAction = (row) => { setIdSelect(row.id); toogle() }
+    const handleDeleteAction = (row) => { setIdSelect(row.id); toogle(); };
     const handleEditAction = (row) => navigate(`${ROUTES.PEOPLES}/edit/${row.id}`, { state: row });
 
-    const toogle = () => setModalOpen(!modalOpen)
+    const toogle = () => setModalOpen(!modalOpen);
     const handleDelete = async () => {
         try {
-            const response = await fetch(`${PEOPLES_API}/${idSelect}`, { method: 'DELETE' })
-            await response.json()
-            setPeoples(peoples.filter(item => item.id !== idSelect))
-            toogle()
-            toast.success(TEXT.SUCCESS_DELETE)
+            const response = await fetch(`${PEOPLES_API}/${idSelect}`, { method: 'DELETE' });
+            await response.json();
+            setPeoples(peoples.filter(item => item.id !== idSelect));
+            toogle();
+            toast.success(TEXT.SUCCESS_DELETE);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
-    }
+    };
+
     return (
         <>
             <Container className='container'>
                 <Typography variant="h1" align='center' className='container-title'>{TEXT.APP_PEOPLES_TITLE}</Typography>
+                {loading && <Typography>Loading...</Typography>}
+                {error && <Typography>{error}</Typography>}
                 <Table columns={columns} title={TEXT.APP_PEOPLES_TITLE} data={peoples} loading={loading} handleAddButtonToolbar={handleAddButtonToolbar} handleDeleteAction={handleDeleteAction} handleEditAction={handleEditAction} />
             </Container>
 
@@ -131,7 +151,7 @@ const HomePage = () => {
                 </Fade>
             </Modal >
         </>
-    )
-}
+    );
+};
 
-export default HomePage
+export default HomePage;
