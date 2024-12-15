@@ -63,3 +63,7 @@ body {
 .button:disabled {
   color: #ffffff !important;
 }
+
+.button-cancel {
+  margin-right: 10px !important;
+}

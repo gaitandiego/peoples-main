@@ -39,6 +39,7 @@ const AddPage = () => {
 
     return (
         <Container className='container'>
+
             <Grid container justifyContent="center">
                 <Grid xs={12} md={12}>
                     <Card>
@@ -46,8 +47,8 @@ const AddPage = () => {
                         <CardContent>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <Box sx={{ flexGrow: 1 }}>
-                                    <Grid container spacing={2}>
-                                        <Grid xs={12} md={4}>
+                                    <Grid container spacing={2}  >
+                                        <Grid size={{ xs: 12, md: 4 }} >
                                             <TextField
                                                 fullWidth
                                                 id="first_name"
@@ -57,7 +58,7 @@ const AddPage = () => {
                                                 error={!!errors.first_name}
                                             />
                                         </Grid>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="last_name"
@@ -68,7 +69,7 @@ const AddPage = () => {
                                             />
                                         </Grid>
 
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="phone"
@@ -82,8 +83,9 @@ const AddPage = () => {
                                     </Grid>
 
                                     <Grid container spacing={2} mt={3}>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
+                                                type='email'
                                                 fullWidth
                                                 id="email"
                                                 label={TEXT.FORM_EMAIL}
@@ -92,7 +94,7 @@ const AddPage = () => {
                                                 error={!!errors.email}
                                             />
                                         </Grid>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="country"
@@ -102,7 +104,7 @@ const AddPage = () => {
                                                 error={!!errors.country}
                                             />
                                         </Grid>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="address"
@@ -116,10 +118,19 @@ const AddPage = () => {
                                     </Grid>
                                 </Box>
                                 <Box sx={{ textAlign: 'right', mt: 3 }}>
+                                    <Button
+                                        onClick={() => navigate(ROUTES.PEOPLES_HOME)}
+                                        disabled={loading}
+                                        variant='contained'
+                                        className='button button-cancel'
+                                        color="primary"
+                                    >
+                                        {TEXT.BTN_CANCEL}
+                                    </Button>
                                     <Button type='submit'
                                         disabled={loading}
                                         variant='contained'
-                                        className='button'
+                                        className='button '
                                         color="primary"
                                     >
                                         {TEXT.BTN_ADD}

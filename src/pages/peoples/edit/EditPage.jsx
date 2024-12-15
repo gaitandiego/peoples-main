@@ -63,7 +63,7 @@ const EditPage = (props) => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <Box sx={{ flexGrow: 1 }}>
                                     <Grid container spacing={2}>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="first_name"
@@ -73,7 +73,7 @@ const EditPage = (props) => {
                                                 error={!!errors.first_name}
                                             />
                                         </Grid>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="last_name"
@@ -84,7 +84,7 @@ const EditPage = (props) => {
                                             />
                                         </Grid>
 
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="phone"
@@ -98,8 +98,9 @@ const EditPage = (props) => {
                                     </Grid>
 
                                     <Grid container spacing={2} mt={3}>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
+                                                type='email'
                                                 fullWidth
                                                 id="email"
                                                 label={TEXT.FORM_EMAIL}
@@ -108,7 +109,7 @@ const EditPage = (props) => {
                                                 error={!!errors.email}
                                             />
                                         </Grid>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="country"
@@ -118,7 +119,7 @@ const EditPage = (props) => {
                                                 error={!!errors.country}
                                             />
                                         </Grid>
-                                        <Grid xs={12} md={4}>
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                             <TextField
                                                 fullWidth
                                                 id="address"
@@ -132,15 +133,25 @@ const EditPage = (props) => {
                                     </Grid>
                                 </Box>
                                 <Box sx={{ textAlign: 'right', mt: 3 }}>
+                                    <Button
+                                        onClick={() => navigate(ROUTES.PEOPLES_HOME)}
+                                        disabled={loading}
+                                        variant='contained'
+                                        className='button button-cancel'
+                                        color="primary"
+                                    >
+                                        {TEXT.BTN_CANCEL}
+                                    </Button>
                                     <Button type='submit'
                                         disabled={loading}
                                         variant='contained'
-                                        className='button'
+                                        className='button '
                                         color="primary"
                                     >
                                         {TEXT.BTN_EDIT}
                                     </Button>
                                 </Box>
+
                             </form>
                         </CardContent>
                     </Card>

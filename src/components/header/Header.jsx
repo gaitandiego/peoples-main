@@ -34,24 +34,31 @@ const Header = () => {
         <AppBar position="fixed" className='menu'>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
+
                     <Box sx={{ display: { xs: 'none', md: 'flex', flexGrow: 1 } }}>
-                        <img
-                            src={ImageLogo}
-                            alt="logo"
-                            loading="lazy"
-                            className='image-logo'
-                        />
+                        <NavLink to={ROUTES.PEOPLES_HOME} className='menu-links' >
+                            <img
+                                src={ImageLogo}
+                                alt="logo"
+                                loading="lazy"
+                                className='image-logo'
+                            />
+
+                        </NavLink>
+
                     </Box>
 
                     {/* Mobile */}
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <img
-                            src={ImageLogo}
-                            alt="logo"
-                            loading="lazy"
-                            className='image-logo'
-                        />
+                        <NavLink to={ROUTES.PEOPLES_HOME} className='menu-links' >
+                            <img
+                                src={ImageLogo}
+                                alt="logo"
+                                loading="lazy"
+                                className='image-logo'
+                            />
+                        </NavLink>
                     </Box>
 
                     <Box role="presentation" sx={{ display: { xs: 'flex', md: 'none' } }}>

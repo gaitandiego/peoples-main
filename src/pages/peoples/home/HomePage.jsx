@@ -8,18 +8,6 @@ import * as ROUTES from '../../../constants/routes';
 import { Table } from '../../../components/table/Table';
 import { toast } from 'react-toastify';
 
-const styleModal = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
 const HomePage = () => {
     const navigate = useNavigate();
 
@@ -112,9 +100,23 @@ const HomePage = () => {
                         timeout: 500,
                     },
                 }}
+                sx={{
+                    display: 'flex',
+                    p: 1,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
             >
                 <Fade in={modalOpen}>
-                    <Box sx={styleModal}>
+                    <Box
+                        sx={(theme) => ({
+                            position: 'relative',
+                            width: 400,
+                            bgcolor: 'background.paper',
+                            border: '2px solid #000',
+                            boxShadow: theme.shadows[5],
+                            p: 4,
+                        })}>
                         <Typography id="transition-modal-title" variant="h6" component="h2">
                             {TEXT.MODAL_TITLE_DELETE_ALERT} {idSelect}
                         </Typography>
@@ -127,7 +129,7 @@ const HomePage = () => {
                         </Box>
                     </Box>
                 </Fade>
-            </Modal>
+            </Modal >
         </>
     )
 }
