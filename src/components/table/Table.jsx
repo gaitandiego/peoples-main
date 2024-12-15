@@ -11,7 +11,7 @@ import { Button, Typography } from '@mui/material';
 
 import * as TEXT from '../../constants/text';
 
-export const Table = ({ columns, data, loading, handleEditAction, handleDeleteAction, handleAddButtonToolbar }) => {
+export const Table = ({ columns, data, loading, handleEditAction, handleDeleteAction, handleAddButtonToolbar, title }) => {
 
     const columnsData = [
         ...columns,
@@ -43,7 +43,7 @@ export const Table = ({ columns, data, loading, handleEditAction, handleDeleteAc
 
     const CustomToolbar = () => (
         <GridToolbarContainer className='toolbar-container' >
-            <Typography variant="h6" className='Mui-focused primary'>{TEXT.APP_TITLE}</Typography>
+            <Typography variant="h6" className='Mui-focused primary'>{title}</Typography>
             <Box sx={{ flexGrow: 1 }} />
             <GridToolbarQuickFilter />
             <GridToolbarExport />

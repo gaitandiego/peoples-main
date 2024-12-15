@@ -85,7 +85,7 @@ const HomePage = () => {
         <>
             <Container className='container'>
                 <Typography variant="h1" align='center' className='container-title'>{TEXT.APP_PEOPLES_TITLE}</Typography>
-                <Table columns={columns} data={peoples} loading={loading} handleAddButtonToolbar={handleAddButtonToolbar} handleDeleteAction={handleDeleteAction} handleEditAction={handleEditAction} />
+                <Table columns={columns} title={TEXT.APP_PEOPLES_TITLE} data={peoples} loading={loading} handleAddButtonToolbar={handleAddButtonToolbar} handleDeleteAction={handleDeleteAction} handleEditAction={handleEditAction} />
             </Container>
 
             <Modal
