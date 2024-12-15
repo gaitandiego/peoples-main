@@ -19,7 +19,7 @@ import * as TEXT from '../../constants/text';
 import * as ROUTES from '../../constants/routes';
 
 import ImageLogo from '../../assets/logo.png';
-import './Header.css';
+import './header.css';
 import { NavLink } from 'react-router';
 
 const Header = () => {
