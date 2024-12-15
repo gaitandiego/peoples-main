@@ -42,17 +42,6 @@ const HomePage = () => {
             field: 'address',
             headerName: 'Address',
             width: 150
-        },
-        {
-            field: 'actions',
-            headerName: 'Actions',
-            width: 150,
-            renderCell: (params) => (
-                <>
-                    <Button key={`edit-${params.row.id}`} aria-label="Edit User" onClick={() => handleEditAction(params.row)}>Edit</Button>
-                    <Button key={`delete-${params.row.id}`} aria-label="Delete User" onClick={() => handleDeleteAction(params.row)}>Delete</Button>
-                </>
-            )
         }
     ];
     const [peoples, setPeoples] = useState([]);
@@ -103,7 +92,7 @@ const HomePage = () => {
         <>
             <Container className='container'>
                 <Typography variant="h1" align='center' className='container-title'>{TEXT.APP_PEOPLES_TITLE}</Typography>
-                {loading && <Typography>Loading...</Typography>}
+                {loading && <Typography>Loading Table...</Typography>}
                 {error && <Typography>{error}</Typography>}
                 <Table columns={columns} title={TEXT.APP_PEOPLES_TITLE} data={peoples} loading={loading} handleAddButtonToolbar={handleAddButtonToolbar} handleDeleteAction={handleDeleteAction} handleEditAction={handleEditAction} />
             </Container>
