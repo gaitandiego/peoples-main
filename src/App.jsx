@@ -1,34 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ToastContainer } from "react-toastify"
+import { BrowserRouter, Route, Routes } from 'react-router';
 
-function App() {
-  const [count, setCount] = useState(0)
+import Header from "./components/header/Header"
+import "react-toastify/dist/ReactToastify.css";
+import * as ROUTES from './constants/routes';
+import PeoplesHomePage from "./pages/peoples/home/HomePage";
+import PeoplesEditPage from "./pages/peoples/edit/EditPage";
+import PeoplesAddPage from "./pages/peoples/add/AddPage";
 
+export const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path={ROUTES.PEOPLES_HOME} element={<PeoplesHomePage />} />
+        <Route path={ROUTES.PEOPLES_ADD} element={<PeoplesAddPage />} />
+        <Route path={ROUTES.PEOPLES_EDIT} element={<PeoplesEditPage />} />
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter>
   )
 }
 

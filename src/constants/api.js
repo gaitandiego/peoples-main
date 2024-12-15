@@ -1,0 +1,1 @@
+export const PEOPLES_API = 'https://l63s7f9e3a.execute-api.us-east-2.amazonaws.com/peoples'

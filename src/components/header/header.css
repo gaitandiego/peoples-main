@@ -1,0 +1,32 @@
+.menu {
+    padding: 0px 60px;
+    background-color: #ffffff !important;
+    color: #5952ab !important;
+    border-bottom: 1px solid #e0e0e0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2),
+        0 4px 5px 0 rgba(0, 0, 0, .14),
+        0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+
+.menu .MuiContainer-root {
+    padding: 0px;
+}
+
+.menu .image-logo {
+    height: 30px;
+}
+
+.menu .menu-icon,
+.MuiListItemIcon-root,
+.MuiListItemText-root {
+    color: #5952ab !important;
+}
+
+.menu .menu-links {
+    color: #5952ab;
+    text-decoration: none;
+    margin: 0px 10px;
+    font-weight: bold;
+}
